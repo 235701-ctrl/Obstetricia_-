@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Generador de Diapositiva</title>
+    <!-- Carga de biblioteca pptxgenjs -->
+    <script src="https://cdn.jsdelivr.net/gh/gitbrent/pptxgenjs@3.12.0/dist/pptxgen.bundle.js"></script>
+</head>
+<body>
+    <h2>Generando tu presentación en PowerPoint...</h2>
+    <script>
+        window.onload = function() {
+            let pptx = new PptxGenJS();
+            
+            // Configuración de la diapositiva (16:9)
+            pptx.layout = 'LAYOUT_169';
+
+            let slide = pptx.addSlide();
+
+            // Fondo de la diapositiva
+            slide.background = { color: 'F4F6F9' };
+
+            // Encabezado (Banda Superior)
+            slide.addShape(pptx.shapes.RECTANGLE, { x: 0, y: 0, w: '100%', h: 1.2, fill: { color: '1A365D' } });
+            slide.addText("Cambios Vasculares en el Embarazo", {
+                x: 0.8, y: 0.2, w: 11, h: 0.8,
+                fontSize: 28, bold: true, color: 'FFFFFF', fontFace: 'Arial'
+            });
+
+            // Tarjeta 1: Aumento de Flujo
+            slide.addShape(pptx.shapes.ROUNDED_RECTANGLE, { x: 0.8, y: 1.8, w: 3.6, h: 4.8, fill: { color: 'FFFFFF' }, line: { color: 'CBD5E0', width: 1 } });
+            slide.addText(" Flujo Sanguíneo", { x: 1.0, y: 2.1, w: 3.2, h: 0.5, fontSize: 18, bold: true, color: '2B6CB0', fontFace: 'Arial' });
+            slide.addText("• Aumento considerable de la irrigación vascular pélvica.\n\n• Adaptación hemodinámica fundamental para el desarrollo gestacional.", { x: 1.0, y: 2.8, w: 3.2, h: 3.5, fontSize: 14, color: '4A5568', fontFace: 'Arial' });
+
+            // Tarjeta 2: Prominencia Vascular
+            slide.addShape(pptx.shapes.ROUNDED_RECTANGLE, { x: 4.8, y: 1.8, w: 3.6, h: 4.8, fill: { color: 'FFFFFF' }, line: { color: 'CBD5E0', width: 1 } });
+            slide.addText(" Prominencia Vascular", { x: 5.0, y: 2.1, w: 3.2, h: 0.5, fontSize: 18, bold: true, color: '2B6CB0', fontFace: 'Arial' });
+            slide.addText("• Los vasos sanguíneos se vuelven notablemente más visibles y dilatados.\n\n• Respuesta directa al incremento de estrógenos y la congestión venosa.", { x: 5.0, y: 2.8, w: 3.2, h: 3.5, fontSize: 14, color: '4A5568', fontFace: 'Arial' });
+
+            // Tarjeta 3: Signo de Chadwick
+            slide.addShape(pptx.shapes.ROUNDED_RECTANGLE, { x: 8.8, y: 1.8, w: 3.8, h: 4.8, fill: { color: 'EBF8FF' }, line: { color: '3182CE', width: 2 } });
+            slide.addText(" Signo de Chadwick", { x: 9.0, y: 2.1, w: 3.4, h: 0.5, fontSize: 18, bold: true, color: '2C5282', fontFace: 'Arial' });
+            slide.addText("• Coloración violácea o azulada característico en la mucosa vaginal, vulvar y del cuello uterino.\n\n• Se manifiesta precozmente entre las semanas 6 y 8 de gestación.", { x: 9.0, y: 2.8, w: 3.4, h: 3.5, fontSize: 14, color: '2D3748', fontFace: 'Arial' });
+
+            // Descargar el archivo PPTX automáticamente
+            pptx.writeFile({ fileName: 'Cambios_Vasculares_Embarazo.pptx' });
+        };
+    </script>
+</body>
+</html>
